@@ -12,7 +12,7 @@ import {
     Alert
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import AsyncStore from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { Button } from '../components/Button';
 import colors from '../styles/colors';
@@ -47,9 +47,12 @@ export function UserIdentification() {
         if(!name)
         return Alert.alert('Me diz como chamar você 😢');
 
-        await AsyncStore.setItem(`@plantmanager:user`, name);
-
-        navigation.navigate('Confirmation');
+        try {
+            await AsyncStorage.setItem('@plantmanager:user', name);
+            navigation.navigate('Confirmation');
+        }catch{
+            Alert.alert('Não foi possível salvar o seu nome. 😢');
+        }
     }  
 
     return (

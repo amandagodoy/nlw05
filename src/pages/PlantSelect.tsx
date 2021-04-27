@@ -23,7 +23,7 @@ interface EnvironmentProps {
     title: string;
 }
 
-export function PlantSelector() {
+export function PlantSelect() {
     const [environments, setEnvironments] = useState<EnvironmentProps[]>([]); 
     const [plants, setPlants] = useState<PlantProps[]>([]);
     const [FilteredPlants, setFilteredPlants] = useState<PlantProps[]>([]);

@@ -37,7 +37,7 @@ const AppRoutes: React.FC = () => (
         />
 
         <stackRoutes.Screen 
-            name="PlantSelector"
+            name="PlantSelect"
             component={AuthRoutes}
         />
 

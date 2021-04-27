@@ -7,7 +7,7 @@ import {
     ActivityIndicator 
 } from 'react-native';
 import { EnvironmentButton } from '../components/EnvironmentButton';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/core';
 
 import { Header } from '../components/Header';
 import { PlantCardPrimary } from '../components/PlantCardPrimary';
@@ -62,7 +62,6 @@ export function PlantSelect() {
         }
         setLoading(false);
         setLoadingMore(false);
-        fetchPlants();
     }
 
     function handleFetchMore(distance: number) {
@@ -70,6 +69,7 @@ export function PlantSelect() {
             return;
         setLoadingMore(true);
         setPage(oldValue => oldValue + 1);
+        fetchPlants();
     }
 
     function handlePlantSelect(plant: PlantProps) {
@@ -146,7 +146,7 @@ export function PlantSelect() {
                     onEndReached={({ distanceFromEnd }) =>
                         handleFetchMore(distanceFromEnd)
                     }
-                    ListEmptyComponent={
+                    ListFooterComponent={
                         loadingMore
                         ? <ActivityIndicator color={colors.green} />
                         : <></>
